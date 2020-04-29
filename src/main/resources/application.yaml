@@ -1,0 +1,46 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: INFO
+#    org.springframework.boot.autoconfigure: DEBUG
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-boot-oauth-client-credentials
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/oauth_client_credentials_demo?useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: mysql
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+app:
+  security:
+    oauth2:
+      client:
+        clientId: 'some-client'
+        clientSecret: '{bcrypt}$2a$07$1WmbnNsU6X74PSjsSQPxCeQI8CLdpNS7GuaBiiSDTZUrd1FNPpWxa' # secret
+        scopes:
+          - read
+        resourceIds:
+          - api # should be the same as for resource server. See ResourceServerConfiguration class.
+        authorizedGrantTypes:
+          - client_credentials
+        accessTokenValiditySeconds: 36000 # 10h
+      jwt:
+        signingKey: 'qaQUKfkBbJ9YheaF'
+
+
+
+
+
+
+
